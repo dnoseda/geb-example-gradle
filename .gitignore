@@ -6,3 +6,7 @@ build
 *.iml
 *.iws
 out
+/bin/
+.classpath
+.project
+.settings/
