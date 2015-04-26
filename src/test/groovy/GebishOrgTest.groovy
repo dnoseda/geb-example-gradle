@@ -1,5 +1,9 @@
+
+
 import geb.Browser;
+import geb.Configuration;
 import geb.junit4.GebReportingTest
+import geb.*
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,7 +26,15 @@ class GebishOrgTest extends GebReportingTest {
 
 
 
-
+	def  threadId = Thread.currentThread().getId()
+	Configuration createConf() {
+		println "Conf start"
+		Configuration conf  = new ConfigurationLoader(gebConfEnv, System.properties, new GroovyClassLoader(getClass().classLoader)).getConf(gebConfScript)
+		
+		conf.reportsDir = new File("build/reports/test/testReportFor-${threadId}")
+		println "Conf END with ${conf}"
+		return conf
+	}
 
 	def toSearch = null
 
