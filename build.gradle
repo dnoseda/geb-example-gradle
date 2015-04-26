@@ -38,6 +38,10 @@ dependencies {
 	
 	// saucelabs dependencies
 	testCompile "com.saucelabs:sauce_junit:1.0.19"
+	
+	testCompile 'commons-lang:commons-lang:2.6'
+
+
 
     // Drivers
     testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
