@@ -16,8 +16,10 @@ class GebishOrgTest extends GebReportingTest {
 	static data(){
 		def dataList = []
 		["dulce","tortita"].each{ toQuery ->
-			dataList << [toQuery] as Object[]
+			dataList << ([toQuery] as Object[])
 		}
+		
+		
 		return dataList
 	}
 	
@@ -29,8 +31,10 @@ class GebishOrgTest extends GebReportingTest {
 	void canGetToTheCurrentBookOfGeb() {
 		to GooglePage
 
+		println "buscando '${toSearch}'"
 		//hover over to expand the menu
 		query = "${toSearch}\n"
 		 
+		println "buscando '${toSearch}' Termino!"
 	}
 }
