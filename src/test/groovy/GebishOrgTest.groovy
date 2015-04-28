@@ -12,6 +12,7 @@ import org.junit.runners.JUnit4
 import com.saucelabs.junit.Parallelized;
 
 import org.junit.runners.Parameterized.Parameters
+import org.openqa.selenium.chrome.ChromeDriver
 import org.codehaus.groovy.runtime.StackTraceUtils
 import org.apache.commons.lang.exception.ExceptionUtils
 
@@ -28,11 +29,13 @@ class GebishOrgTest extends GebReportingTest {
 
 	def  threadId = Thread.currentThread().getId()
 	Configuration createConf() {
-		println "Conf start"
+		println "Conf start ${threadId}"
 		Configuration conf  = new ConfigurationLoader(gebConfEnv, System.properties, new GroovyClassLoader(getClass().classLoader)).getConf(gebConfScript)
-		
+
 		conf.reportsDir = new File("build/reports/test/testReportFor-${threadId}")
-		println "Conf END with ${conf}"
+		
+		conf.cacheDriverPerThread = true
+		println "Conf END with ${conf} ${threadId}"
 		return conf
 	}
 
